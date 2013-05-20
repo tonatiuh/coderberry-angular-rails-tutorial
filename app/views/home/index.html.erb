@@ -3,5 +3,18 @@
 </header>
 
 <div ng-controller="EpisodesCtrl">
-  <h1>Message: {{message}}</h1>
+  <div id="episode-list-container" >
+    <ul>
+      <li ng-repeat="episode in episodes">
+        <h3 ng-click="showEpisode(episode)" ng-class="isSelected(episode)">{{episode.title}} <small>({{episode.duration}})</small></h3>
+      </li>
+    </ul>
+  </div>
+
+  <div id="episode-view-container" ng-show="selectedEpisode">
+    <h2>{{selectedEpisode.title}}</h2>
+    <p>{{selectedEpisode.description}}</p>
+
+    <div id="player"></div>
+  </div>
 </div>
